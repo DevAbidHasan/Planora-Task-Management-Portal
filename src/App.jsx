@@ -1,12 +1,49 @@
+import toast, { Toaster } from 'react-hot-toast';
 import './App.css'
+import Swal from 'sweetalert2'
+import { House } from 'lucide-react';
+import { AiFillCarryOut } from "react-icons/ai";
+
 function App() {
+
+  const showAlert = () => {
+    Swal.fire({
+  icon: "error",
+  title: "Oops...",
+  text: "Something went wrong!",
+  footer: '<a href="#">Why do I have this issue?</a>'
+});
+  }
+
+  const showSuccess = ()=>{
+    toast.success('Successfully toasted!')
+  }
 
   return (
     <>
-      <h2 className='font-black jakarta my-10 opacity-60 text-amber-500 text-5xl text-center'>this is planora</h2>
-      
-      <p className='mx-10 text-gray-500 inter mb-10'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus laudantium tempore voluptates velit cumque quod magni excepturi repellendus enim omnis modi autem commodi officia quidem perferendis illo esse, ratione perspiciatis, adipisci ullam aperiam soluta accusantium! Quae ut officiis, assumenda, dolorem ipsam voluptates dolorum vel cupiditate deleniti sit iusto recusandae? Neque.</p>
-      <button class="btn btn-primary">Primary</button>
+      <h2 className='font-black jakarta flex items-center justify-center gap-10 my-10 opacity-60 text-amber-500 text-5xl'>
+        <House size={40} />
+        Planora
+        <AiFillCarryOut size={35}/>
+      </h2>
+
+      <p className='mx-10 text-gray-500 text-center inter mb-10'>
+        Plan Your Future
+      </p>
+
+      <button
+        className="btn btn-primary"
+        onClick={showAlert}
+      >
+        Show Alert
+      </button>
+      <button
+        className="btn btn-secondary"
+        onClick={showSuccess}
+      >
+        Show toast
+      </button>
+      <Toaster />
     </>
   )
 }
